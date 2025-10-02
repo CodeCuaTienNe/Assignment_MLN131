@@ -4,7 +4,11 @@
 /* Main App Container */
 .app-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--red-600), var(--dark-red-700));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("https://golatravel.com/upload/filemanager/C%E1%BB%99t%20c%E1%BB%9D%20L%C5%A9ng%20C%C3%BA%20nh%C3%ACn%20t%E1%BB%AB%20cao.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -184,7 +188,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
   width: 100%;
@@ -244,6 +248,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .prompt-card:hover {
@@ -279,6 +284,8 @@
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
+  border-radius: 12px;
+  padding: 0.5rem;
 }
 
 .message-avatar {
@@ -294,12 +301,16 @@
 }
 
 .user-message .message-avatar {
-  background: var(--yellow-500);
+  background: rgba(249, 243, 80, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--red-800);
 }
 
 .ai-message .message-avatar {
-  background: var(--cream-200);
+  background: rgba(253, 242, 221, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--red-700);
 }
 
@@ -326,25 +337,30 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Input Container - Fixed at bottom */
+/* Input Container - Floating */
 .input-container {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.8);
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 800px;
+  width: calc(100% - 2rem);
+  background: rgba(253, 242, 221, 0.8);
   backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 0.75rem;
   display: flex;
   gap: 0.75rem;
-  align-items: flex-end;
+  align-items: center;
   z-index: 1000;
-  transition: left 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
 .main-content.with-sidebar .input-container {
-  left: 280px;
+  margin-left: 140px;
+  width: calc(100% - 300px);
 }
 
 .input-wrapper {
@@ -632,13 +648,13 @@
 .ant-input {
   background: transparent !important;
   border: none !important;
-  color: var(--cream-100) !important;
+  color: var(--red-800) !important;
   font-size: 1rem !important;
   padding: 0 !important;
 }
 
 .ant-input::placeholder {
-  color: var(--cream-300) !important;
+  color: var(--red-400) !important;
 }
 
 .ant-input:focus,

@@ -195,7 +195,7 @@ export default function TestAI() {
                   }`}
                 >
                   <div className="message-avatar">
-                    {message.isUser ? "B" : "AI"}
+                    {message.isUser ? "ME" : "GD"}
                   </div>
                   <div className="message-content">
                     {message.isUser ? (
@@ -338,7 +338,7 @@ export default function TestAI() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Nhập câu hỏi về chính trị Việt Nam..."
+                placeholder="Nhập câu hỏi ở đây nhé 😍..."
                 autoSize={{ minRows: 1, maxRows: 4 }}
                 style={{
                   background: "transparent",
@@ -350,7 +350,7 @@ export default function TestAI() {
             </div>
             <Button
               type="primary"
-              icon={<SendHorizontal size={18} />}
+              icon={<SendHorizontal size={24} />}
               onClick={() => handleSend()}
               disabled={loading || !input.trim()}
               style={{
@@ -359,7 +359,12 @@ export default function TestAI() {
                 color: "var(--red-800)",
                 fontWeight: "600",
                 height: "auto",
-                minHeight: "40px",
+                minHeight: "20px",
+                width: "38px",
+                borderRadius: "12px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             />
           </div>
