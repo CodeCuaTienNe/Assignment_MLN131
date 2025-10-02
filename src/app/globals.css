@@ -3,6 +3,54 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Socialist Red Scale */
+  --red-50: #fef2f2;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #d43731;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #862921;
+
+  /* Revolutionary Yellow Scale */
+  --yellow-50: #fefce8;
+  --yellow-100: #fef9c3;
+  --yellow-200: #fef08a;
+  --yellow-300: #fde047;
+  --yellow-400: #facc15;
+  --yellow-500: #f9f350;
+  --yellow-600: #ca8a04;
+  --yellow-700: #a16207;
+  --yellow-800: #854d0e;
+  --yellow-900: #713f12;
+
+  /* Cream/Beige Scale */
+  --cream-50: #fefdfb;
+  --cream-100: #fdf9f3;
+  --cream-200: #fdf2dd;
+  --cream-300: #fce7bc;
+  --cream-400: #fad89a;
+  --cream-500: #f8c979;
+  --cream-600: #e5a854;
+  --cream-700: #c88a3c;
+  --cream-800: #a36c2d;
+  --cream-900: #7d5322;
+
+  /* Dark Red/Maroon Scale */
+  --dark-red-50: #fef2f2;
+  --dark-red-100: #fee2e2;
+  --dark-red-200: #fdc8c6;
+  --dark-red-300: #fba39f;
+  --dark-red-400: #f77066;
+  --dark-red-500: #ec4437;
+  --dark-red-600: #d92d20;
+  --dark-red-700: #b61f16;
+  --dark-red-800: #971f17;
+  --dark-red-900: #862921;
 }
 
 @theme inline {
@@ -10,6 +58,54 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Socialist Red */
+  --color-vn-red-50: var(--red-50);
+  --color-vn-red-100: var(--red-100);
+  --color-vn-red-200: var(--red-200);
+  --color-vn-red-300: var(--red-300);
+  --color-vn-red-400: var(--red-400);
+  --color-vn-red-500: var(--red-500);
+  --color-vn-red-600: var(--red-600);
+  --color-vn-red-700: var(--red-700);
+  --color-vn-red-800: var(--red-800);
+  --color-vn-red-900: var(--red-900);
+
+  /* Revolutionary Yellow */
+  --color-vn-yellow-50: var(--yellow-50);
+  --color-vn-yellow-100: var(--yellow-100);
+  --color-vn-yellow-200: var(--yellow-200);
+  --color-vn-yellow-300: var(--yellow-300);
+  --color-vn-yellow-400: var(--yellow-400);
+  --color-vn-yellow-500: var(--yellow-500);
+  --color-vn-yellow-600: var(--yellow-600);
+  --color-vn-yellow-700: var(--yellow-700);
+  --color-vn-yellow-800: var(--yellow-800);
+  --color-vn-yellow-900: var(--yellow-900);
+
+  /* Cream */
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+  --color-cream-300: var(--cream-300);
+  --color-cream-400: var(--cream-400);
+  --color-cream-500: var(--cream-500);
+  --color-cream-600: var(--cream-600);
+  --color-cream-700: var(--cream-700);
+  --color-cream-800: var(--cream-800);
+  --color-cream-900: var(--cream-900);
+
+  /* Dark Red */
+  --color-dark-red-50: var(--dark-red-50);
+  --color-dark-red-100: var(--dark-red-100);
+  --color-dark-red-200: var(--dark-red-200);
+  --color-dark-red-300: var(--dark-red-300);
+  --color-dark-red-400: var(--dark-red-400);
+  --color-dark-red-500: var(--dark-red-500);
+  --color-dark-red-600: var(--dark-red-600);
+  --color-dark-red-700: var(--dark-red-700);
+  --color-dark-red-800: var(--dark-red-800);
+  --color-dark-red-900: var(--dark-red-900);
 }
 
 @media (prefers-color-scheme: dark) {
