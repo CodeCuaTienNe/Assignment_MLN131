@@ -1,86 +1,342 @@
 /* Custom styles for the presentation */
-
-/* Ant Design overrides with !important */
-.ant-layout-header {
-  height: 4rem !important;
-  line-height: normal !important;
-  padding: 0 !important;
+.smooth-scroll {
+  scroll-behavior: smooth;
 }
 
-.ant-menu-horizontal {
-  border: none !important;
+.section-height {
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.ant-menu-item {
-  color: var(--color-cream-50) !important;
+/* Academic Layout Classes */
+.academic-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.ant-menu-item:hover {
-  color: var(--color-vn-yellow-400) !important;
+.academic-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 55, 49, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-.ant-menu-item-selected {
-  color: var(--color-vn-yellow-400) !important;
-  border-bottom-color: var(--color-vn-yellow-400) !important;
+.academic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(212, 55, 49, 0.15);
 }
 
-.ant-card {
-  border-radius: 0.75rem !important;
+.theory-card {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 55, 49, 0.05),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-left: 4px solid var(--vn-red-600);
 }
 
-.ant-card-head {
-  border-bottom-color: var(--color-cream-200) !important;
+.practice-card {
+  background: linear-gradient(
+    135deg,
+    rgba(249, 243, 80, 0.1),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-left: 4px solid var(--vn-yellow-500);
 }
 
-.ant-typography h1,
-.ant-typography h2,
-.ant-typography h3,
-.ant-typography h4 {
-  font-family: "Fraunces", serif !important;
+/* Text Visibility Improvements */
+.text-readable {
+  color: #2d3748;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
-.ant-btn-primary {
-  background-color: var(--color-vn-red-600) !important;
-  border-color: var(--color-vn-red-600) !important;
+.text-readable-light {
+  color: #4a5568;
+  line-height: 1.6;
 }
 
-.ant-btn-primary:hover {
-  background-color: var(--color-vn-red-700) !important;
-  border-color: var(--color-vn-red-700) !important;
+.text-emphasis {
+  color: var(--vn-red-700);
+  font-weight: 600;
 }
 
-.ant-timeline-item-head {
-  border-width: 2px !important;
+.text-highlight {
+  background: linear-gradient(
+    120deg,
+    rgba(249, 243, 80, 0.3) 0%,
+    rgba(249, 243, 80, 0.3) 100%
+  );
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
 }
 
-.ant-tag {
-  font-family: "Fraunces", serif !important;
+/* Academic Section Headers */
+.section-header {
+  background: linear-gradient(135deg, var(--vn-red-600), var(--vn-red-700));
+  color: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.ant-divider-horizontal.ant-divider-with-text::before,
-.ant-divider-horizontal.ant-divider-with-text::after {
-  border-top-color: var(--color-vn-red-200) !important;
+.section-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("https://cdn-media.sforum.vn/storage/app/media/anh-vinh-ha-long-28.jpg")
+    center/cover;
+  opacity: 0.15;
+  z-index: 0;
 }
 
-.ant-anchor-link-title {
-  color: var(--color-cream-100) !important;
+.section-header > * {
+  position: relative;
+  z-index: 1;
 }
 
-.ant-anchor-link-title:hover {
-  color: var(--color-vn-yellow-400) !important;
+.subsection-header {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 55, 49, 0.9),
+    rgba(185, 28, 28, 0.9)
+  );
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
 }
 
-.ant-float-btn-primary {
-  background-color: var(--color-vn-red-600) !important;
+/* Quote Styles */
+.academic-quote {
+  background: rgba(249, 243, 80, 0.1);
+  border-left: 4px solid var(--vn-yellow-500);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  position: relative;
 }
 
-.ant-float-btn-primary:hover {
-  background-color: var(--color-vn-red-700) !important;
+.academic-quote::before {
+  content: '"';
+  font-size: 4rem;
+  color: var(--vn-yellow-500);
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  opacity: 0.5;
 }
 
-/* Custom animations */
+/* List Improvements */
+.academic-list {
+  list-style: none;
+  padding: 0;
+}
+
+.academic-list li {
+  padding: 0.75rem 0;
+  padding-left: 2rem;
+  position: relative;
+  border-bottom: 1px solid rgba(212, 55, 49, 0.1);
+}
+
+.academic-list li::before {
+  content: "▸";
+  color: var(--vn-red-600);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.academic-list li:last-child {
+  border-bottom: none;
+}
+
+/* Timeline Academic Style */
+.academic-timeline {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.academic-timeline::before {
+  content: "";
+  position: absolute;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    var(--vn-red-600),
+    var(--vn-yellow-500)
+  );
+}
+
+.timeline-event {
+  position: relative;
+  margin-left: 4rem;
+  margin-bottom: 3rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-event::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 1.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--vn-red-600);
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--vn-yellow-400);
+}
+
+/* Statistics Display */
+.stat-card {
+  background: linear-gradient(135deg, rgba(212, 55, 49, 0.05), white);
+  padding: 2rem;
+  text-align: center;
+  border-radius: 12px;
+  border: 2px solid rgba(212, 55, 49, 0.1);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--vn-red-600);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Image Container Improvements */
+.academic-image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.academic-image:hover {
+  transform: scale(1.02);
+}
+
+.academic-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.academic-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Academic Navigation */
+.academic-nav {
+  background: linear-gradient(135deg, var(--vn-red-600), var(--vn-red-700));
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white !important;
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  background: rgba(249, 243, 80, 0.2);
+  color: var(--vn-yellow-400) !important;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(249, 243, 80, 0.3);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: var(--vn-yellow-400);
+  border-radius: 1px;
+}
+
+/* Vietnam flag style */
+.vietnam-flag {
+  background: linear-gradient(
+    to bottom,
+    var(--vn-red-600) 0%,
+    var(--vn-red-600) 100%
+  );
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 40px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.vietnam-flag::after {
+  content: "★";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--vn-yellow-500);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Animations */
+.floating-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 .fade-in {
-  animation: fadeIn 0.8s ease-in-out;
+  animation: fadeIn 1s ease-in;
 }
 
 @keyframes fadeIn {
@@ -94,290 +350,527 @@
   }
 }
 
-.slide-up {
-  animation: slideUp 0.6s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Custom scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Vietnam flag animation */
-.vietnam-flag-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.pulse-animation {
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-/* Section transitions */
-section {
-  transition: all 0.5s ease-in-out;
-}
-
-/* Custom gradient backgrounds */
-.bg-vietnam-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--color-vn-red-600) 0%,
-    var(--color-dark-red-700) 100%
-  );
-}
-
-.bg-cream-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--color-cream-50) 0%,
-    var(--color-cream-100) 100%
-  );
-}
-
-/* Soft gradient backgrounds */
-.bg-soft-red {
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 50%, #fecaca 100%);
-}
-
-.bg-soft-yellow {
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
-}
-
-.bg-soft-blue {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
-}
-
-.bg-soft-green {
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
-}
-
-.bg-soft-purple {
-  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e9d5ff 100%);
-}
-
-.bg-soft-gray {
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 50%, #e5e7eb 100%);
-}
-
-/* Hover effects for cards */
-.ant-card:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-  transform: scale(1.02) !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Custom timeline styles */
-.ant-timeline-item-tail {
-  border-left-color: var(--color-vn-red-300) !important;
-}
-
-.ant-timeline-item-head-red {
-  background-color: var(--color-vn-red-500) !important;
-  border-color: var(--color-vn-red-500) !important;
-}
-
-.ant-timeline-item-head-orange {
-  background-color: var(--color-vn-yellow-500) !important;
-  border-color: var(--color-vn-yellow-500) !important;
-}
-
-.ant-timeline-item-head-green {
-  background-color: #10b981 !important;
-  border-color: #10b981 !important;
-}
-
-/* Responsive typography */
-@media (max-width: 768px) {
-  .ant-typography h1 {
-    font-size: 1.5rem !important;
-  }
-
-  .ant-typography h2 {
-    font-size: 1.25rem !important;
-  }
-
-  .ant-layout-header {
-    padding: 0 1rem !important;
-  }
-
-  .ant-menu-horizontal {
-    display: flex !important;
-    flex-wrap: wrap !important;
-  }
-}
-
-/* Custom container */
-.presentation-container {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 640px) {
-  .presentation-container {
-    padding: 0 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .presentation-container {
-    padding: 0 2rem;
-  }
-}
-
-/* Text selection styling */
-::selection {
-  background-color: var(--color-vn-yellow-400);
-  color: var(--color-dark-red-800);
-}
-
-::-moz-selection {
-  background-color: var(--color-vn-yellow-400);
-  color: var(--color-dark-red-800);
-}
-
-/* Focus styles for accessibility */
-.ant-btn:focus,
-.ant-menu-item:focus {
-  outline: 2px solid var(--color-vn-yellow-400) !important;
-  outline-offset: 2px !important;
-}
-
-/* Loading animations */
-.loading-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes shimmer {
   0% {
-    background-position: -200% 0;
+    box-shadow: 0 0 0 0 rgba(212, 55, 49, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(212, 55, 49, 0);
   }
   100% {
-    background-position: 200% 0;
+    box-shadow: 0 0 0 0 rgba(212, 55, 49, 0);
   }
 }
 
-/* Smooth scroll for sections */
-.smooth-scroll {
-  scroll-behavior: smooth;
+/* Timeline styles */
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 2rem;
 }
 
-/* Custom section styling */
-.section-16-9 {
-  aspect-ratio: 16/9;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--vn-red-600);
+  border: 3px solid var(--vn-yellow-400);
 }
 
-/* Custom button animations */
-.ant-btn {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 12px;
+  width: 2px;
+  height: calc(100% - 12px);
+  background: var(--vn-red-400);
 }
 
-.ant-btn:hover {
-  transform: translateY(-1px) !important;
+.timeline-item:last-child::after {
+  display: none;
 }
 
-/* Custom spacing for better layout */
-.section-spacing {
-  padding: 5rem 0;
-}
-
-@media (max-width: 768px) {
-  .section-spacing {
-    padding: 3rem 0;
-  }
-}
-
-/* Simplified card styles */
-.simple-card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+/* Card hover effects */
+.card-hover {
   transition: all 0.3s ease;
 }
 
-.simple-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Content sections */
-.content-section {
-  padding: 4rem 0;
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vn-red-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vn-red-600);
+}
+
+/* Progress indicator styles */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--vn-red-600),
+    var(--vn-yellow-500)
+  );
+  transform-origin: left;
+  z-index: 100;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vietnam-flag {
+    width: 40px;
+    height: 27px;
+  }
+
+  .vietnam-flag::after {
+    font-size: 14px;
+  }
+
+  .section-height {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+}
+
+/* Print styles */
+@media print {
+  .fixed {
+    position: relative !important;
+  }
+
+  .bg-gradient-to-br,
+  .bg-gradient-to-r {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid var(--vn-yellow-400);
+  outline-offset: 2px;
+}
+
+/* Loading animation */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--cream-200);
+  border-top: 4px solid var(--vn-red-600);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Typography enhancements */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
+}
+
+/* Custom bullet points */
+.custom-bullet {
   position: relative;
+  padding-left: 1.5rem;
 }
 
-.content-section::before {
+.custom-bullet::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  color: var(--vn-yellow-500);
+  font-weight: bold;
+}
+
+/* Section dividers */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--vn-red-600),
+    transparent
+  );
+  margin: 2rem 0;
+}
+
+/* Image overlays */
+.image-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-overlay::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.1;
-  pointer-events: none;
-}
-
-/* Clean layout helpers */
-.clean-spacing {
-  margin-bottom: 3rem;
-}
-
-.clean-spacing:last-child {
-  margin-bottom: 0;
-}
-
-/* Subtle borders */
-.subtle-border {
-  border-left: 4px solid var(--color-vn-red-200);
-  padding-left: 1.5rem;
-}
-
-/* Icon containers */
-.icon-container {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  margin-bottom: 1rem;
   background: rgba(212, 55, 49, 0.1);
-  color: var(--color-vn-red-600);
+  transition: opacity 0.3s ease;
 }
 
-/* Text emphasis */
-.text-emphasis {
-  color: var(--color-vn-red-600);
+.image-overlay:hover::after {
+  opacity: 0;
+}
+
+/* Statistics counters */
+.stat-counter {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--vn-red-600);
+  line-height: 1;
+}
+
+/* Quote styles */
+.quote-mark {
+  font-size: 4rem;
+  color: var(--vn-yellow-400);
+  opacity: 0.3;
+  line-height: 1;
+  font-family: serif;
+}
+
+/* Mobile navigation */
+@media (max-width: 768px) {
+  .mobile-nav {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-nav.open {
+    transform: translateX(0);
+  }
+}
+
+/* Parallax effect */
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Content reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth animations for cards */
+.card-animate {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-animate:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(212, 55, 49, 0.2);
+}
+
+/* Text gradient effect */
+.gradient-text {
+  background: linear-gradient(135deg, var(--vn-red-600), var(--vn-yellow-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Academic Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--vn-red-600), var(--vn-red-700));
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: none;
   font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(212, 55, 49, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 55, 49, 0.4);
+  background: linear-gradient(135deg, var(--vn-red-700), var(--vn-red-800));
+}
+
+.btn-secondary {
+  background: linear-gradient(
+    135deg,
+    var(--vn-yellow-400),
+    var(--vn-yellow-500)
+  );
+  color: var(--vn-red-700);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(249, 243, 80, 0.4);
+}
+
+/* Hero Section Academic Style */
+.hero-academic {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 55, 49, 0.9),
+    rgba(134, 41, 33, 0.95)
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-academic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("https://cdn-media.sforum.vn/storage/app/media/anh-vinh-ha-long-28.jpg")
+    center/cover;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.hero-description {
+  background: rgba(249, 243, 80, 0.15);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(249, 243, 80, 0.3);
+  margin: 2rem auto;
+  max-width: 800px;
+}
+
+/* Typing animation */
+.typewriter {
+  overflow: hidden;
+  border-right: 0.15em solid var(--vn-yellow-400);
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--vn-yellow-400);
+  }
+}
+
+/* Stagger animation for list items */
+.stagger-item {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+.stagger-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stagger-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stagger-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stagger-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Vietnam flag enhanced animation */
+.flag-wave {
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+
+/* Summary panel animation */
+.slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Progress indicator dots */
+.progress-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cream-300);
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background: var(--vn-red-600);
+  transform: scale(1.2);
+}
+
+/* Hover effects for images */
+.image-hover-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-hover-effect img {
+  transition: transform 0.3s ease;
+}
+
+.image-hover-effect:hover img {
+  transform: scale(1.1);
+}
+
+/* Timeline enhanced styles */
+.timeline-enhanced::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--vn-red-600),
+    var(--vn-yellow-500)
+  );
+}
+
+/* Mobile-specific animations */
+@media (max-width: 768px) {
+  .mobile-fade-in {
+    animation: mobileFadeIn 0.8s ease-out;
+  }
+
+  @keyframes mobileFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
