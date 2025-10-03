@@ -1,3 +1,4 @@
+import { ConfigProvider } from "antd";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./page.css";
@@ -29,7 +30,36 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >
-        {children}
+        <ConfigProvider
+          theme={{
+            token: {
+              colorPrimary: "#d43731", // vn-red-600
+              colorSuccess: "#f9f350", // vn-yellow-500
+              colorWarning: "#f8c979", // cream-500
+              colorError: "#b91c1c", // vn-red-700
+              colorInfo: "#d43731",
+              colorTextBase: "#171717", // foreground
+              colorBgBase: "#ffffff", // background
+              fontFamily: "var(--font-fraunces), serif",
+              borderRadius: 8,
+              wireframe: false,
+            },
+            components: {
+              Layout: {
+                headerBg: "#d43731",
+                headerColor: "#ffffff",
+              },
+              Card: {
+                borderRadius: 12,
+              },
+              Button: {
+                borderRadius: 8,
+              },
+            },
+          }}
+        >
+          {children}
+        </ConfigProvider>
       </body>
     </html>
   );

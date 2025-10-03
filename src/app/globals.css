@@ -137,3 +137,42 @@ li,
 label {
   font-family: var(--font-fraunces), serif;
 }
+
+/* Ant Design customizations */
+.ant-layout-header {
+  background: #d43731 !important;
+}
+
+.ant-btn-primary {
+  background: #f9f350 !important;
+  border-color: #f9f350 !important;
+  color: #171717 !important;
+}
+
+.ant-btn-primary:hover {
+  background: #f8c979 !important;
+  border-color: #f8c979 !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdf9f3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d43731;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b91c1c;
+}
