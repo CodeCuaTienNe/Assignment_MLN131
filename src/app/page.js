@@ -466,7 +466,7 @@ export default function GiaDinhPresentation() {
           <Button
             type="primary"
             shape="circle"
-            onClick={() => router.push("/giaidap")}
+            onClick={() => router.push("/Assignment_MLN131/giaidap")}
             style={{
               background: "#f9f350",
               borderColor: "#f9f350",

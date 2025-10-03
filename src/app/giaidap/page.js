@@ -161,7 +161,7 @@ export default function TestAI() {
             <Button
               type="text"
               icon={<ArrowLeftOutlined />}
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/Assignment_MLN131")}
               style={{
                 color: "white",
                 display: "flex",
