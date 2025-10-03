@@ -1,33 +1,60 @@
 "use client";
 
-import { Button, Input, Spin } from "antd";
+import { ArrowLeftOutlined, RobotOutlined } from "@ant-design/icons";
+import { Button, Input, Layout, Spin, Typography } from "antd";
 import { Menu, MessageCircle, Plus, SendHorizontal, X } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useAI } from "../../hooks/gemini-ai/use-ai";
 import "./giaidap.css";
 
+const { Header, Content } = Layout;
+const { Title } = Typography;
+
 const suggestedPrompts = [
   {
-    title: "Chính sách Đổi mới",
-    text: "Giải thích về chính sách Đổi mới của Việt Nam và tác động của nó đến sự phát triển đất nước",
+    title: "Lý luận Mác-Ăngghen về gia đình",
+    text: "Giải thích quan điểm của C.Mác và Ph.Ăngghen về nguồn gốc lịch sử và bản chất của gia đình",
   },
   {
-    title: "Chủ nghĩa xã hội Việt Nam",
-    text: "Đặc điểm nổi bật của mô hình chủ nghĩa xã hội định hướng thị trường ở Việt Nam",
+    title: "Quan điểm Lê-nin về gia đình",
+    text: "Lý luận của V.I.Lê-nin về vai trò của gia đình trong thời kỳ quá độ lên chủ nghĩa xã hội",
   },
   {
-    title: "Đối ngoại đa phương",
-    text: "Chính sách đối ngoại đa phương hóa, đa dạng hóa của Việt Nam trong thời kỳ hội nhập",
+    title: "Gia đình Việt Nam trong kháng chiến",
+    text: "Phân tích sự chuyển đổi vai trò của gia đình Việt Nam trong cuộc kháng chiến chống Mỹ (1945-1975)",
   },
   {
-    title: "Phát triển bền vững",
-    text: "Chiến lược phát triển bền vững của Việt Nam đến năm 2030, tầm nhìn 2045",
+    title: "Gia đình trong thời kỳ Đổi mới",
+    text: "Đánh giá tác động của kinh tế thị trường và hội nhập đến cấu trúc gia đình Việt Nam từ 1986 đến nay",
+  },
+  {
+    title: "Mất cân bằng giới tính khi sinh",
+    text: "Phân tích nguyên nhân và hệ lụy của tình trạng mất cân bằng giới tính khi sinh ở Việt Nam",
+  },
+  {
+    title: "Tình yêu và hôn nhân trong xã hội XHCN",
+    text: "Thảo luận về mối quan hệ giữa tình yêu, hôn nhân và các giá trị gia đình trong chủ nghĩa xã hội",
   },
 ];
 
+const suggestionTags = [
+  "Gia đình trong thời kỳ quá độ",
+  "Quan điểm Mác-Ăngghen về gia đình",
+  "Lý luận Lê-nin về hôn nhân",
+  "Thực tiễn gia đình Việt Nam",
+  "Chính sách gia đình XHCN",
+  "Tình trạng mất cân bằng giới tính",
+  "Vai trò phụ nữ trong kháng chiến",
+  "Gia đình hạt nhân hiện đại",
+  "Giải phóng phụ nữ theo Mác",
+  "Thách thức gia đình Việt Nam",
+];
+
 export default function TestAI() {
+  const router = useRouter();
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -107,269 +134,398 @@ export default function TestAI() {
   };
 
   return (
-    <div className="app-container">
-      {/* Menu Toggle Button - Hide when sidebar is open */}
-      {!sidebarOpen && (
-        <Button
-          className="menu-toggle"
-          icon={<Menu size={20} />}
-          onClick={() => setSidebarOpen(true)}
-        />
-      )}
-      {/* Sidebar Overlay - Only show when sidebar is open */}
-      {sidebarOpen && (
+    <Layout style={{ minHeight: "100vh" }}>
+      {/* Header với thiết kế giống trang chính */}
+      <Header
+        style={{
+          position: "fixed",
+          top: 0,
+          width: "100%",
+          zIndex: 1000,
+          background: "#d43731",
+          padding: "0 16px",
+          height: "56px",
+          lineHeight: "56px",
+        }}
+      >
         <div
-          className="sidebar-overlay open"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}{" "}
-      {/* Sidebar */}
-      <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-        <div className="sidebar-header">
-          <h3>Lịch sử trò chuyện</h3>
-          <Button
-            className="sidebar-close-btn"
-            icon={<X size={16} />}
-            type="text"
-            onClick={() => setSidebarOpen(false)}
-          />
-        </div>
-
-        <Button
-          className="new-session-btn"
-          icon={<Plus size={16} />}
-          onClick={createNewSession}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "100%",
+          }}
         >
-          Cuộc trò chuyện mới
-        </Button>
-
-        <div className="session-list">
-          {sessions.map((session) => (
-            <div
-              key={session.id}
-              className={`session-item ${session.active ? "active" : ""}`}
-              onClick={() => switchSession(session.id)}
-            >
-              <MessageCircle size={16} style={{ marginRight: "8px" }} />
-              {session.title}
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Main Content */}
-      <div className={`main-content ${sidebarOpen ? "with-sidebar" : ""}`}>
-        <div className="chat-container">
-          {messages.length === 0 ? (
-            // Welcome Screen
-            <div className="welcome-screen">
-              <div className="welcome-title">
-                Học tập Mác Lênin - Chủ nghĩa xã hội khoa học
-              </div>
-              <div className="welcome-subtitle">
-                Trợ lý AI chuyên về lý luận chính trị Việt Nam. Hãy bắt đầu cuộc
-                trò chuyện bằng cách chọn một chủ đề dưới đây hoặc đặt câu hỏi
-                của riêng bạn.
-              </div>
-
-              <div className="suggested-prompts">
-                {suggestedPrompts.map((prompt, index) => (
-                  <div
-                    key={index}
-                    className="prompt-card"
-                    onClick={() => handlePromptClick(prompt)}
-                  >
-                    <div className="prompt-card-title">{prompt.title}</div>
-                    <div className="prompt-card-text">{prompt.text}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ) : (
-            // Chat Messages
-            <div className="chat-messages">
-              {messages.map((message, index) => (
-                <div
-                  key={index}
-                  className={`message ${
-                    message.isUser ? "user-message" : "ai-message"
-                  }`}
-                >
-                  <div className="message-avatar">
-                    {message.isUser ? "ME" : "GD"}
-                  </div>
-                  <div className="message-content">
-                    {message.isUser ? (
-                      message.text
-                    ) : (
-                      <ReactMarkdown
-                        remarkPlugins={[remarkGfm]}
-                        components={{
-                          p: ({ children }) => (
-                            <p
-                              style={{
-                                marginBottom: "0.5rem",
-                                lineHeight: "1.6",
-                              }}
-                            >
-                              {children}
-                            </p>
-                          ),
-                          strong: ({ children }) => (
-                            <strong
-                              style={{
-                                color: "var(--yellow-400)",
-                                fontWeight: "600",
-                              }}
-                            >
-                              {children}
-                            </strong>
-                          ),
-                          ul: ({ children }) => (
-                            <ul
-                              style={{
-                                paddingLeft: "1.5rem",
-                                marginBottom: "0.5rem",
-                              }}
-                            >
-                              {children}
-                            </ul>
-                          ),
-                          ol: ({ children }) => (
-                            <ol
-                              style={{
-                                paddingLeft: "1.5rem",
-                                marginBottom: "0.5rem",
-                              }}
-                            >
-                              {children}
-                            </ol>
-                          ),
-                          li: ({ children }) => (
-                            <li
-                              style={{
-                                marginBottom: "0.25rem",
-                                listStyleType: "disc",
-                              }}
-                            >
-                              {children}
-                            </li>
-                          ),
-                          h1: ({ children }) => (
-                            <h1
-                              style={{
-                                color: "var(--yellow-400)",
-                                fontSize: "1.5rem",
-                                fontWeight: "700",
-                                marginBottom: "1rem",
-                              }}
-                            >
-                              {children}
-                            </h1>
-                          ),
-                          h2: ({ children }) => (
-                            <h2
-                              style={{
-                                color: "var(--yellow-400)",
-                                fontSize: "1.25rem",
-                                fontWeight: "600",
-                                marginBottom: "0.75rem",
-                              }}
-                            >
-                              {children}
-                            </h2>
-                          ),
-                          h3: ({ children }) => (
-                            <h3
-                              style={{
-                                color: "var(--yellow-400)",
-                                fontSize: "1.1rem",
-                                fontWeight: "600",
-                                marginBottom: "0.5rem",
-                              }}
-                            >
-                              {children}
-                            </h3>
-                          ),
-                          code: ({ children }) => (
-                            <code
-                              style={{
-                                background: "rgba(0,0,0,0.2)",
-                                padding: "0.2rem 0.4rem",
-                                borderRadius: "4px",
-                                fontSize: "0.9rem",
-                              }}
-                            >
-                              {children}
-                            </code>
-                          ),
-                          blockquote: ({ children }) => (
-                            <blockquote
-                              style={{
-                                borderLeft: "3px solid var(--yellow-400)",
-                                paddingLeft: "1rem",
-                                margin: "1rem 0",
-                                fontStyle: "italic",
-                              }}
-                            >
-                              {children}
-                            </blockquote>
-                          ),
-                        }}
-                      >
-                        {message.text}
-                      </ReactMarkdown>
-                    )}
-                  </div>
-                </div>
-              ))}
-              {loading && (
-                <div className="loading-container">
-                  <Spin size="large" />
-                </div>
-              )}
-              {error && <div className="error-message">Lỗi: {error}</div>}
-            </div>
-          )}
-
-          {/* Input Container */}
-          <div className="input-container">
-            <div className="input-wrapper">
-              <Input.TextArea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Nhập câu hỏi ở đây nhé 😍..."
-                autoSize={{ minRows: 1, maxRows: 4 }}
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  color: "var(--cream-100)",
-                  fontSize: "1rem",
-                }}
-              />
-            </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            {/* Nút quay về */}
             <Button
-              type="primary"
-              icon={<SendHorizontal size={24} />}
-              onClick={() => handleSend()}
-              disabled={loading || !input.trim()}
+              type="text"
+              icon={<ArrowLeftOutlined />}
+              onClick={() => router.push("/")}
               style={{
-                background: "var(--yellow-500)",
-                borderColor: "var(--yellow-500)",
-                color: "var(--red-800)",
-                fontWeight: "600",
-                height: "auto",
-                minHeight: "20px",
-                width: "38px",
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+                fontSize: "16px",
+                height: "40px",
+                padding: "0 8px",
+              }}
+              title="Quay về trang chính"
+            />
+
+            {/* Lá cờ Việt Nam */}
+            <div
+              style={{
+                width: 40,
+                height: 26,
+                background: "#d43731",
+                position: "relative",
+                borderRadius: 3,
+                border: "1px solid #b91c1c",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+              }}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="#f9f350"
+                style={{ filter: "drop-shadow(0 1px 2px rgba(0,0,0,0.3))" }}
+              >
+                <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" />
+              </svg>
+            </div>
+
+            <Title
+              level={5}
+              style={{
+                color: "white",
+                margin: 0,
+                fontSize: "16px",
+                fontWeight: 600,
+              }}
+            >
+              <RobotOutlined style={{ marginRight: 8 }} />
+              Trợ lý AI - Gia đình trong thời kỳ quá độ
+            </Title>
+          </div>
+        </div>
+      </Header>
+
+      <Content style={{ marginTop: 56 }}>
+        <div className="app-container">
+          {/* Mobile Menu Toggle - Only show when sidebar is closed */}
+          {!sidebarOpen && (
+            <Button
+              className="mobile-menu-toggle"
+              icon={<Menu size={20} />}
+              onClick={() => setSidebarOpen(true)}
+              style={{
+                position: "fixed",
+                top: "70px",
+                left: "1rem",
+                zIndex: 1001,
+                background: "linear-gradient(135deg, #d43731, #b91c1c)",
+                borderColor: "#f9f350",
+                color: "white",
                 borderRadius: "12px",
+                width: "48px",
+                height: "48px",
+                border: "2px solid #f9f350",
+                boxShadow: "0 4px 16px rgba(212, 55, 49, 0.3)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
               }}
             />
+          )}
+
+          {/* Sidebar Overlay - Only show when sidebar is open */}
+          {sidebarOpen && (
+            <div
+              className="sidebar-overlay open"
+              onClick={() => setSidebarOpen(false)}
+            />
+          )}
+
+          {/* Sidebar */}
+          <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
+            <div className="sidebar-header">
+              <h3>Lịch sử trò chuyện</h3>
+              <Button
+                className="sidebar-close-btn"
+                icon={<X size={16} />}
+                type="text"
+                onClick={() => setSidebarOpen(false)}
+              />
+            </div>
+
+            <Button
+              className="new-session-btn"
+              icon={<Plus size={16} />}
+              onClick={createNewSession}
+            >
+              Cuộc trò chuyện mới
+            </Button>
+
+            <div className="session-list">
+              {sessions.map((session) => (
+                <div
+                  key={session.id}
+                  className={`session-item ${session.active ? "active" : ""}`}
+                  onClick={() => switchSession(session.id)}
+                >
+                  <MessageCircle size={16} style={{ marginRight: "8px" }} />
+                  {session.title}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className={`main-content ${sidebarOpen ? "with-sidebar" : ""}`}>
+            <div className="chat-container">
+              {messages.length === 0 ? (
+                // Welcome Screen
+                <div className="welcome-screen">
+                  <div className="welcome-title">
+                    Học tập Mác Lênin - Chủ nghĩa xã hội khoa học
+                  </div>
+                  <div className="welcome-subtitle">
+                    Trợ lý AI chuyên về lý luận chính trị Việt Nam. Hãy bắt đầu
+                    cuộc trò chuyện bằng cách chọn một chủ đề dưới đây hoặc đặt
+                    câu hỏi của riêng bạn.
+                  </div>
+
+                  <div className="suggested-prompts">
+                    {suggestedPrompts.map((prompt, index) => (
+                      <div
+                        key={index}
+                        className="prompt-card"
+                        onClick={() => handlePromptClick(prompt)}
+                      >
+                        <div className="prompt-card-title">{prompt.title}</div>
+                        <div className="prompt-card-text">{prompt.text}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                // Chat Messages
+                <div className="chat-messages">
+                  {messages.map((message, index) => (
+                    <div
+                      key={index}
+                      className={`message ${
+                        message.isUser ? "user-message" : "ai-message"
+                      }`}
+                    >
+                      <div className="message-avatar">
+                        {message.isUser ? "ME" : "GD"}
+                      </div>
+                      <div className="message-content">
+                        {message.isUser ? (
+                          message.text
+                        ) : (
+                          <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                              p: ({ children }) => (
+                                <p
+                                  style={{
+                                    marginBottom: "0.5rem",
+                                    lineHeight: "1.6",
+                                  }}
+                                >
+                                  {children}
+                                </p>
+                              ),
+                              strong: ({ children }) => (
+                                <strong
+                                  style={{
+                                    color: "#d43731",
+                                    fontWeight: "700",
+                                  }}
+                                >
+                                  {children}
+                                </strong>
+                              ),
+                              ul: ({ children }) => (
+                                <ul
+                                  style={{
+                                    paddingLeft: "1.5rem",
+                                    marginBottom: "0.5rem",
+                                  }}
+                                >
+                                  {children}
+                                </ul>
+                              ),
+                              ol: ({ children }) => (
+                                <ol
+                                  style={{
+                                    paddingLeft: "1.5rem",
+                                    marginBottom: "0.5rem",
+                                  }}
+                                >
+                                  {children}
+                                </ol>
+                              ),
+                              li: ({ children }) => (
+                                <li
+                                  style={{
+                                    marginBottom: "0.25rem",
+                                    listStyleType: "disc",
+                                  }}
+                                >
+                                  {children}
+                                </li>
+                              ),
+                              h1: ({ children }) => (
+                                <h1
+                                  style={{
+                                    color: "#d43731",
+                                    fontSize: "1.5rem",
+                                    fontWeight: "800",
+                                    marginBottom: "1rem",
+                                    borderBottom: "2px solid #f9f350",
+                                    paddingBottom: "0.5rem",
+                                  }}
+                                >
+                                  {children}
+                                </h1>
+                              ),
+                              h2: ({ children }) => (
+                                <h2
+                                  style={{
+                                    color: "#d43731",
+                                    fontSize: "1.25rem",
+                                    fontWeight: "700",
+                                    marginBottom: "0.75rem",
+                                  }}
+                                >
+                                  {children}
+                                </h2>
+                              ),
+                              h3: ({ children }) => (
+                                <h3
+                                  style={{
+                                    color: "#d43731",
+                                    fontSize: "1.1rem",
+                                    fontWeight: "700",
+                                    marginBottom: "0.5rem",
+                                  }}
+                                >
+                                  {children}
+                                </h3>
+                              ),
+                              code: ({ children }) => (
+                                <code
+                                  style={{
+                                    background: "#f3f4f6",
+                                    padding: "0.2rem 0.4rem",
+                                    borderRadius: "4px",
+                                    fontSize: "0.9rem",
+                                  }}
+                                >
+                                  {children}
+                                </code>
+                              ),
+                              blockquote: ({ children }) => (
+                                <blockquote
+                                  style={{
+                                    borderLeft: "4px solid #d43731",
+                                    paddingLeft: "1rem",
+                                    margin: "1rem 0",
+                                    fontStyle: "italic",
+                                    background: "rgba(212, 55, 49, 0.05)",
+                                    borderRadius: "0 8px 8px 0",
+                                    padding: "0.75rem 0 0.75rem 1rem",
+                                  }}
+                                >
+                                  {children}
+                                </blockquote>
+                              ),
+                            }}
+                          >
+                            {message.text}
+                          </ReactMarkdown>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                  {loading && (
+                    <div className="loading-container">
+                      <Spin size="large" />
+                    </div>
+                  )}
+                  {error && <div className="error-message">Lỗi: {error}</div>}
+                </div>
+              )}
+
+              {/* Suggestion Tags - Only show after conversation started */}
+              {messages.length > 0 && (
+                <div className="suggestion-tags">
+                  <div className="suggestion-tags-title">
+                    💡 Gợi ý câu hỏi tiếp theo:
+                  </div>
+                  <div className="suggestion-tags-list">
+                    {suggestionTags.map((tag, index) => (
+                      <button
+                        key={index}
+                        className="suggestion-tag"
+                        onClick={() => handleSend(tag)}
+                        disabled={loading}
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Input Container */}
+              <div className="input-container">
+                <div className="input-wrapper">
+                  <Input.TextArea
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Nhập câu hỏi ở đây nhé 😍..."
+                    autoSize={{ minRows: 1, maxRows: 4 }}
+                    style={{
+                      background: "transparent",
+                      border: "none",
+                      color: "#333333",
+                      fontSize: "1rem",
+                    }}
+                  />
+                </div>
+                <Button
+                  type="primary"
+                  icon={<SendHorizontal size={20} />}
+                  onClick={() => handleSend()}
+                  disabled={loading || !input.trim()}
+                  className="send-button"
+                  style={{
+                    background: "var(--yellow-500)",
+                    borderColor: "var(--yellow-500)",
+                    color: "var(--red-800)",
+                    fontWeight: "600",
+                    width: "40px",
+                    borderRadius: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Content>
+    </Layout>
   );
 }
