@@ -1,0 +1,383 @@
+/* Custom styles for the presentation */
+
+/* Ant Design overrides with !important */
+.ant-layout-header {
+  height: 4rem !important;
+  line-height: normal !important;
+  padding: 0 !important;
+}
+
+.ant-menu-horizontal {
+  border: none !important;
+}
+
+.ant-menu-item {
+  color: var(--color-cream-50) !important;
+}
+
+.ant-menu-item:hover {
+  color: var(--color-vn-yellow-400) !important;
+}
+
+.ant-menu-item-selected {
+  color: var(--color-vn-yellow-400) !important;
+  border-bottom-color: var(--color-vn-yellow-400) !important;
+}
+
+.ant-card {
+  border-radius: 0.75rem !important;
+}
+
+.ant-card-head {
+  border-bottom-color: var(--color-cream-200) !important;
+}
+
+.ant-typography h1,
+.ant-typography h2,
+.ant-typography h3,
+.ant-typography h4 {
+  font-family: "Fraunces", serif !important;
+}
+
+.ant-btn-primary {
+  background-color: var(--color-vn-red-600) !important;
+  border-color: var(--color-vn-red-600) !important;
+}
+
+.ant-btn-primary:hover {
+  background-color: var(--color-vn-red-700) !important;
+  border-color: var(--color-vn-red-700) !important;
+}
+
+.ant-timeline-item-head {
+  border-width: 2px !important;
+}
+
+.ant-tag {
+  font-family: "Fraunces", serif !important;
+}
+
+.ant-divider-horizontal.ant-divider-with-text::before,
+.ant-divider-horizontal.ant-divider-with-text::after {
+  border-top-color: var(--color-vn-red-200) !important;
+}
+
+.ant-anchor-link-title {
+  color: var(--color-cream-100) !important;
+}
+
+.ant-anchor-link-title:hover {
+  color: var(--color-vn-yellow-400) !important;
+}
+
+.ant-float-btn-primary {
+  background-color: var(--color-vn-red-600) !important;
+}
+
+.ant-float-btn-primary:hover {
+  background-color: var(--color-vn-red-700) !important;
+}
+
+/* Custom animations */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Vietnam flag animation */
+.vietnam-flag-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Section transitions */
+section {
+  transition: all 0.5s ease-in-out;
+}
+
+/* Custom gradient backgrounds */
+.bg-vietnam-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-vn-red-600) 0%,
+    var(--color-dark-red-700) 100%
+  );
+}
+
+.bg-cream-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-cream-50) 0%,
+    var(--color-cream-100) 100%
+  );
+}
+
+/* Soft gradient backgrounds */
+.bg-soft-red {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 50%, #fecaca 100%);
+}
+
+.bg-soft-yellow {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%);
+}
+
+.bg-soft-blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
+}
+
+.bg-soft-green {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+}
+
+.bg-soft-purple {
+  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e9d5ff 100%);
+}
+
+.bg-soft-gray {
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 50%, #e5e7eb 100%);
+}
+
+/* Hover effects for cards */
+.ant-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  transform: scale(1.02) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Custom timeline styles */
+.ant-timeline-item-tail {
+  border-left-color: var(--color-vn-red-300) !important;
+}
+
+.ant-timeline-item-head-red {
+  background-color: var(--color-vn-red-500) !important;
+  border-color: var(--color-vn-red-500) !important;
+}
+
+.ant-timeline-item-head-orange {
+  background-color: var(--color-vn-yellow-500) !important;
+  border-color: var(--color-vn-yellow-500) !important;
+}
+
+.ant-timeline-item-head-green {
+  background-color: #10b981 !important;
+  border-color: #10b981 !important;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .ant-typography h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .ant-typography h2 {
+    font-size: 1.25rem !important;
+  }
+
+  .ant-layout-header {
+    padding: 0 1rem !important;
+  }
+
+  .ant-menu-horizontal {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+/* Custom container */
+.presentation-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .presentation-container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .presentation-container {
+    padding: 0 2rem;
+  }
+}
+
+/* Text selection styling */
+::selection {
+  background-color: var(--color-vn-yellow-400);
+  color: var(--color-dark-red-800);
+}
+
+::-moz-selection {
+  background-color: var(--color-vn-yellow-400);
+  color: var(--color-dark-red-800);
+}
+
+/* Focus styles for accessibility */
+.ant-btn:focus,
+.ant-menu-item:focus {
+  outline: 2px solid var(--color-vn-yellow-400) !important;
+  outline-offset: 2px !important;
+}
+
+/* Loading animations */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Smooth scroll for sections */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Custom section styling */
+.section-16-9 {
+  aspect-ratio: 16/9;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom button animations */
+.ant-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ant-btn:hover {
+  transform: translateY(-1px) !important;
+}
+
+/* Custom spacing for better layout */
+.section-spacing {
+  padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-spacing {
+    padding: 3rem 0;
+  }
+}
+
+/* Simplified card styles */
+.simple-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.simple-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* Content sections */
+.content-section {
+  padding: 4rem 0;
+  position: relative;
+}
+
+.content-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* Clean layout helpers */
+.clean-spacing {
+  margin-bottom: 3rem;
+}
+
+.clean-spacing:last-child {
+  margin-bottom: 0;
+}
+
+/* Subtle borders */
+.subtle-border {
+  border-left: 4px solid var(--color-vn-red-200);
+  padding-left: 1.5rem;
+}
+
+/* Icon containers */
+.icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background: rgba(212, 55, 49, 0.1);
+  color: var(--color-vn-red-600);
+}
+
+/* Text emphasis */
+.text-emphasis {
+  color: var(--color-vn-red-600);
+  font-weight: 600;
+}

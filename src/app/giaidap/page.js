@@ -5,7 +5,7 @@ import { Menu, MessageCircle, Plus, SendHorizontal, X } from "lucide-react";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { useAI } from "../hooks/gemini-ai/use-ai";
+import { useAI } from "../../hooks/gemini-ai/use-ai";
 import "./giaidap.css";
 
 const suggestedPrompts = [
