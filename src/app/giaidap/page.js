@@ -38,6 +38,14 @@ const suggestedPrompts = [
     title: "Tình yêu và hôn nhân trong xã hội XHCN",
     text: "Thảo luận về mối quan hệ giữa tình yêu, hôn nhân và các giá trị gia đình trong chủ nghĩa xã hội",
   },
+  {
+    title: "Quan điểm Hồ Chí Minh về gia đình",
+    text: "Phân tích quan điểm của Chủ tịch Hồ Chí Minh về vai trò của gia đình trong xã hội Việt Nam",
+  },
+  {
+    title: "Gia đình trong xã hội XHCN",
+    text: "Thảo luận về đặc điểm và vai trò của gia đình trong xã hội xã hội chủ nghĩa",
+  },
 ];
 
 const suggestionTags = [
@@ -142,7 +150,7 @@ export default function TestAI() {
           top: 0,
           width: "100%",
           zIndex: 1000,
-          background: "#d43731",
+          background: "#a84334",
           padding: "0 16px",
           height: "56px",
           lineHeight: "56px",
@@ -185,7 +193,6 @@ export default function TestAI() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
               }}
             >
               <svg
@@ -228,14 +235,13 @@ export default function TestAI() {
                 top: "70px",
                 left: "1rem",
                 zIndex: 1001,
-                background: "linear-gradient(135deg, #d43731, #b91c1c)",
+                background: "#a84334",
                 borderColor: "#f9f350",
                 color: "white",
                 borderRadius: "12px",
                 width: "48px",
                 height: "48px",
                 border: "2px solid #f9f350",
-                boxShadow: "0 4px 16px rgba(212, 55, 49, 0.3)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -295,9 +301,9 @@ export default function TestAI() {
                     Học tập Mác Lênin - Chủ nghĩa xã hội khoa học
                   </div>
                   <div className="welcome-subtitle">
-                    Trợ lý AI chuyên về lý luận chính trị Việt Nam. Hãy bắt đầu
-                    cuộc trò chuyện bằng cách chọn một chủ đề dưới đây hoặc đặt
-                    câu hỏi của riêng bạn.
+                    Trợ lý AI tùy chỉnh cho nhu cầu học tập. Hãy bắt đầu cuộc
+                    trò chuyện bằng cách chọn một chủ đề dưới đây hoặc đặt câu
+                    hỏi của riêng bạn.
                   </div>
 
                   <div className="suggested-prompts">
@@ -324,7 +330,7 @@ export default function TestAI() {
                       }`}
                     >
                       <div className="message-avatar">
-                        {message.isUser ? "ME" : "GD"}
+                        {message.isUser ? "ME" : <RobotOutlined />}
                       </div>
                       <div className="message-content">
                         {message.isUser ? (
