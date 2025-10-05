@@ -2,7 +2,7 @@
 
 import { ArrowLeftOutlined, RobotOutlined } from "@ant-design/icons";
 import { Button, Input, Layout, Spin, Typography } from "antd";
-import { Menu, MessageCircle, Plus, SendHorizontal, X } from "lucide-react";
+import { MessageCircle, Plus, SendHorizontal, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -225,7 +225,7 @@ export default function TestAI() {
       <Content style={{ marginTop: 56 }}>
         <div className="app-container">
           {/* Mobile Menu Toggle - Only show when sidebar is closed */}
-          {!sidebarOpen && (
+          {/* {!sidebarOpen && (
             <Button
               className="mobile-menu-toggle"
               icon={<Menu size={20} />}
@@ -247,7 +247,7 @@ export default function TestAI() {
                 justifyContent: "center",
               }}
             />
-          )}
+          )} */}
 
           {/* Sidebar Overlay - Only show when sidebar is open */}
           {sidebarOpen && (
