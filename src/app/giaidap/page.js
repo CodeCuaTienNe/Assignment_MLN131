@@ -114,6 +114,7 @@ export default function TestAI() {
   const handleKeyPress = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
+      if (loading || !input.trim()) return;
       handleSend();
     }
   };
