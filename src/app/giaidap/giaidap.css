@@ -1,12 +1,10 @@
 /* Main App Container - Using Vietnam flag colors */
 .app-container {
   min-height: calc(100vh - 56px);
-  background: linear-gradient(
-    135deg,
-    rgba(251, 252, 232, 0.95) 0%,
-    rgba(255, 251, 235, 0.98) 50%,
-    rgba(249, 243, 80, 0.1) 100%
-  );
+  background: #f5e6d3;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
   font-family: "Fraunces", "Inter", -apple-system, BlinkMacSystemFont,
     sans-serif;
   position: relative;
@@ -14,14 +12,16 @@
 
 /* CSS Variables matching main page */
 :root {
-  --vn-red-600: #d43731;
-  --vn-red-700: #b91c1c;
-  --vn-red-800: #991b1b;
-  --vn-yellow-400: #f9f350;
-  --vn-yellow-500: #f9f350;
-  --cream-100: #fbfce8;
-  --cream-200: #fef7e7;
-  --cream-300: #fef3eb;
+  --vn-red-600: #a84334;
+  --vn-red-700: #8b3a2b;
+  --vn-red-800: #6b2f23;
+  --vn-yellow-400: #f5e6d3;
+  --vn-yellow-500: #f5e6d3;
+  --cream-100: #f5e6d3;
+  --cream-200: #f0ede7;
+  --cream-300: #e8e3dc;
+  --navy: #0f1f3d;
+  --gold: #d4af37;
 }
 
 /* Header */
@@ -74,19 +74,14 @@
   top: 56px;
   width: 260px;
   height: calc(100vh - 56px);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(251, 252, 232, 0.9)
-  );
+  background: var(--navy);
   backdrop-filter: blur(10px);
-  border-right: 1px solid rgba(212, 55, 49, 0.1);
+  border-right: 1px solid rgba(168, 67, 52, 0.1);
   padding: 1rem;
   overflow-y: auto;
   z-index: 100;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
-  box-shadow: 2px 0 8px rgba(212, 55, 49, 0.1);
 }
 
 .sidebar.open {
@@ -98,10 +93,10 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
-  color: var(--vn-red-700);
+  color: var(--cream-100);
   position: relative;
   padding-bottom: 1rem;
-  border-bottom: 2px solid var(--vn-yellow-400);
+  border-bottom: 2px solid var(--gold);
 }
 
 .sidebar-header h3 {
@@ -111,11 +106,6 @@
   font-weight: 600;
   transition: all 0.2s ease;
 }
-
-.sidebar-header h3:hover {
-  color: #4b5563;
-}
-
 .sidebar-close-btn {
   position: absolute;
   top: -5px;
@@ -147,31 +137,21 @@
 }
 
 .new-session-btn {
-  background: linear-gradient(
-    135deg,
-    var(--vn-red-600),
-    var(--vn-red-700)
-  ) !important;
-  border-color: var(--vn-red-600) !important;
-  color: #ffffff !important;
+  background: #a84334 !important;
+  border-color: #a84334 !important;
+  color: #f5e6d3 !important;
   font-weight: 600;
   border-radius: 8px;
   width: 100%;
   margin-bottom: 1rem;
   font-size: 0.875rem;
-  box-shadow: 0 4px 12px rgba(212, 55, 49, 0.3);
   transition: all 0.3s ease;
 }
 
 .new-session-btn:hover {
-  background: linear-gradient(
-    135deg,
-    var(--vn-red-700),
-    var(--vn-red-800)
-  ) !important;
-  border-color: var(--vn-red-700) !important;
+  background: #8b3a2b !important;
+  border-color: #8b3a2b !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(212, 55, 49, 0.4);
 }
 
 .session-list {
@@ -182,20 +162,20 @@
 
 .session-item {
   padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--navy);
   border-radius: 8px;
-  color: var(--vn-red-700);
+  color: var(--cream-100);
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid rgba(212, 55, 49, 0.1);
+  border: 1px solid rgba(168, 67, 52, 0.1);
   font-size: 0.875rem;
   display: flex;
   align-items: center;
 }
 
 .session-item:hover {
-  background: rgba(249, 243, 80, 0.1);
-  border-color: var(--vn-yellow-400);
+  background: var(--gold);
+  border-color: var(--gold);
   transform: translateX(4px);
 }
 
@@ -204,7 +184,6 @@
   color: #ffffff;
   font-weight: 600;
   border-color: var(--vn-red-600);
-  box-shadow: 0 4px 12px rgba(212, 55, 49, 0.3);
 }
 
 /* Main Chat Area */
@@ -267,13 +246,10 @@
   font-size: clamp(1.8rem, 4vw, 2.8rem); /* Giảm font size */
   font-weight: 800;
   font-optical-sizing: auto;
-  background: linear-gradient(135deg, var(--vn-red-600), var(--vn-red-800));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--vn-red-600);
   margin-bottom: 0.75rem; /* Giảm margin */
   text-align: center;
-  line-height: 1.1; /* Giảm line height */
+  line-height: 1.5; /* Tăng line height để tránh chữ bị cắt */
   letter-spacing: -0.02em;
 }
 
@@ -298,18 +274,19 @@
 }
 
 .prompt-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--vn-red-600);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 55, 49, 0.1);
+  border: 1px solid rgba(168, 67, 52, 0.1);
   border-radius: 10px;
   padding: 1rem 1.25rem; /* Giảm padding */
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
-  height: fit-content; /* Tự động điều chỉnh chiều cao */
+  height: 140px; /* Đặt chiều cao cố định để các ô bằng nhau */
+  display: flex;
+  flex-direction: column;
 }
 
 .prompt-card::before {
@@ -319,19 +296,13 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    var(--vn-red-600),
-    var(--vn-yellow-400)
-  );
+  background: var(--vn-red-600);
   transition: width 0.3s ease;
 }
 
 .prompt-card:hover {
-  background: rgba(249, 243, 80, 0.1);
-  border-color: var(--vn-yellow-400);
+  border-color: var(--gold);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(212, 55, 49, 0.15);
 }
 
 .prompt-card:hover::before {
@@ -339,7 +310,7 @@
 }
 
 .prompt-card-title {
-  color: var(--vn-red-700);
+  color: var(--cream-100);
   font-weight: 700;
   margin-bottom: 0.5rem; /* Giảm margin */
   font-size: 1rem; /* Giảm font size */
@@ -354,10 +325,16 @@
 }
 
 .prompt-card-text {
-  color: var(--vn-red-600);
+  color: var(--cream-100);
   font-size: 0.85rem; /* Giảm font size */
-  line-height: 1.4; /* Giảm line height */
+  line-height: 1.1; /* Giảm line height */
   font-weight: 400;
+  flex: 1; /* Chiếm không gian còn lại */
+  overflow: hidden; /* Ẩn nội dung tràn */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Giới hạn số dòng */
+  -webkit-box-orient: vertical;
+  line-clamp: 3; /* Thuộc tính chuẩn */
 }
 
 /* Chat Messages */
@@ -376,6 +353,19 @@
   align-items: flex-start;
   border-radius: 12px;
   padding: 0.25rem; /* Giảm padding */
+  width: 100%;
+}
+
+.user-message {
+  display: flex;
+  justify-content: right;
+  flex-direction: row-reverse;
+}
+
+.ai-message {
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
 }
 
 .message-avatar {
@@ -391,55 +381,44 @@
 }
 
 .user-message .message-avatar {
-  background: linear-gradient(135deg, var(--vn-red-600), var(--vn-red-700));
+  background: var(--vn-red-600);
   border: 2px solid var(--vn-yellow-400);
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(212, 55, 49, 0.3);
 }
 
 .ai-message .message-avatar {
-  background: linear-gradient(
-    135deg,
-    var(--vn-yellow-400),
-    var(--vn-yellow-500)
-  );
+  background: var(--gold);
   border: 2px solid var(--vn-red-600);
-  color: var(--vn-red-800);
+  color: var(--cream-100);
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(249, 243, 80, 0.3);
 }
 
 .message-content {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--navy);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 55, 49, 0.1);
+  border: 1px solid rgba(168, 67, 52, 0.1);
   border-radius: 12px;
   padding: 1rem 1.25rem;
   max-width: calc(100% - 50px);
-  color: var(--vn-red-800);
+  color: var(--cream-100);
   line-height: 1.7;
   font-size: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .user-message .message-content {
-  background: linear-gradient(
-    135deg,
-    rgba(249, 243, 80, 0.15),
-    rgba(255, 255, 255, 0.95)
-  );
-  color: var(--vn-red-800);
-  border-color: var(--vn-yellow-400);
-  border-left: 4px solid var(--vn-yellow-400);
+  background: var(--vn-red-600);
+  color: var(--cream-100);
+  border-color: var(--gold);
+  border-left: 4px solid var(--gold);
   font-weight: 500;
 }
 
 .ai-message .message-content {
   background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(212, 55, 49, 0.15);
-  color: var(--vn-red-700);
+  border-color: rgba(168, 67, 52, 0.15);
+  color: #333333;
   border-left: 4px solid var(--vn-red-600);
 }
 
@@ -460,7 +439,7 @@
   gap: 1rem;
   align-items: center;
   z-index: 1000;
-  box-shadow: 0 8px 20px rgba(212, 55, 49, 0.2);
+  /* box-shadow: 0 8px 20px rgba(212, 55, 49, 0.2); */
   transition: all 0.3s ease;
   min-height: 60px; /* Đặt chiều cao tối thiểu */
 }
@@ -504,7 +483,7 @@
 
 .mobile-menu-toggle:hover {
   transform: translateY(-2px) scale(1.05) !important;
-  box-shadow: 0 6px 20px rgba(212, 55, 49, 0.4) !important;
+  /* box-shadow: 0 6px 20px rgba(212, 55, 49, 0.4) !important; */
 }
 
 /* Animation when hiding/showing menu toggle */
@@ -623,13 +602,11 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    box-shadow: 0 4px 16px rgba(212, 55, 49, 0.3);
     transition: all 0.3s ease;
   }
 
   .mobile-menu-toggle:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(212, 55, 49, 0.4);
   }
 
   .suggested-prompts {
@@ -870,14 +847,9 @@
 }
 
 .ant-btn-primary:hover {
-  background: linear-gradient(
-    135deg,
-    var(--vn-yellow-500),
-    var(--vn-yellow-400)
-  ) !important;
+  background: var(--vn-yellow-500) !important;
   border-color: var(--vn-yellow-500) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(249, 243, 80, 0.4) !important;
 }
 
 .ant-btn-primary:disabled {
@@ -990,11 +962,7 @@
 }
 
 .suggestion-tag {
-  background: linear-gradient(
-    135deg,
-    rgba(249, 243, 80, 0.1),
-    rgba(255, 255, 255, 0.8)
-  );
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid var(--vn-yellow-400);
   color: var(--vn-red-700);
   padding: 0.5rem 1rem;
@@ -1007,14 +975,9 @@
 }
 
 .suggestion-tag:hover {
-  background: linear-gradient(
-    135deg,
-    var(--vn-yellow-400),
-    var(--vn-yellow-500)
-  );
-  color: var(--vn-red-800);
+  background: var(--vn-red-600);
+  color: var(--cream-100);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(249, 243, 80, 0.3);
 }
 
 .suggestion-tag:disabled {
@@ -1024,11 +987,7 @@
 }
 
 .suggestion-tag:disabled:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(249, 243, 80, 0.1),
-    rgba(255, 255, 255, 0.8)
-  );
+  background: rgba(255, 255, 255, 0.95);
   color: var(--vn-red-700);
   transform: none;
   box-shadow: none;
