@@ -49,11 +49,11 @@ export const Slide4 = ({ scrollToSection }) => {
               </Title>
               <div style={{ marginBottom: 16 }}>
                 <Image
-                  src="https://cdn-media.sforum.vn/storage/app/media/anh-vinh-ha-long-28.jpg"
+                  src="https://img.freepik.com/vector-cao-cap/hinh-anh-vector-hoat-hinh-gia-dinh-hanh-phuc-de-thuong_723224-1330.jpg"
                   alt="Gia đình thời tư bản"
                   width="100%"
-                  height={200}
-                  style={{ objectFit: "cover", borderRadius: 8 }}
+                  height={250}
+                  style={{ objectFit: "contain", borderRadius: 8 }}
                   preview={false}
                 />
               </div>
@@ -98,11 +98,11 @@ export const Slide4 = ({ scrollToSection }) => {
               </Title>
               <div style={{ marginBottom: 16 }}>
                 <Image
-                  src="https://cdn-media.sforum.vn/storage/app/media/anh-vinh-ha-long-28.jpg"
+                  src="https://cdcangiang.vn/wp-content/uploads/2023/06/NgayGD_VN.jpg"
                   alt="Gia đình xã hội chủ nghĩa"
                   width="100%"
-                  height={200}
-                  style={{ objectFit: "cover", borderRadius: 8 }}
+                  height={250}
+                  style={{ objectFit: "contain", borderRadius: 8 }}
                   preview={false}
                 />
               </div>
