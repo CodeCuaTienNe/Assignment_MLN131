@@ -25,8 +25,15 @@ export function useAI() {
   const [error, setError] = useState(null);
 
   const generateResponse = async (userInput) => {
-    if (!process.env.NEXT_PUBLIC_GEMINI_API_KEY) {
-      setError("API key is not set");
+    const keys = [
+      { key: process.env.NEXT_PUBLIC_GEMINI_API_KEY, version: "v1" },
+      { key: process.env.NEXT_PUBLIC_GEMINI_API_KEY_V2, version: "v2" },
+    ];
+
+    const availableKeys = keys.filter((k) => k.key);
+
+    if (availableKeys.length === 0) {
+      setError("No API keys available");
       return null;
     }
 
@@ -34,8 +41,13 @@ export function useAI() {
       setLoading(true);
       setError(null);
 
+      // Chọn ngẫu nhiên một key
+      const selected =
+        availableKeys[Math.floor(Math.random() * availableKeys.length)];
+      console.log(`Using ${selected.version}`);
+
       const genAI = new GoogleGenAI({
-        apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY,
+        apiKey: selected.key,
       });
 
       // Using generateContent with Gemini 2.5 Flash model
@@ -46,9 +58,34 @@ export function useAI() {
 
       return response.text;
     } catch (err) {
-      console.error("Gemini API Error:", err);
-      setError(err.message);
-      return null;
+      console.error(`Error with ${selected.version}:`, err);
+
+      // Thử key còn lại nếu có
+      const remaining = availableKeys.filter((k) => k !== selected);
+      if (remaining.length > 0) {
+        const fallback = remaining[0];
+        console.log(`Falling back to ${fallback.version}`);
+
+        try {
+          const genAI = new GoogleGenAI({
+            apiKey: fallback.key,
+          });
+
+          const response = await genAI.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: SYSTEM_PROMPT + "\n\n" + userInput,
+          });
+
+          return response.text;
+        } catch (fallbackErr) {
+          console.error(`Error with ${fallback.version}:`, fallbackErr);
+          setError("Both API keys failed");
+          return null;
+        }
+      } else {
+        setError("API key failed");
+        return null;
+      }
     } finally {
       setLoading(false);
     }
