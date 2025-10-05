@@ -28,6 +28,7 @@ export function useAI() {
     const keys = [
       { key: process.env.NEXT_PUBLIC_GEMINI_API_KEY, version: "v1" },
       { key: process.env.NEXT_PUBLIC_GEMINI_API_KEY_V2, version: "v2" },
+      { key: process.env.NEXT_PUBLIC_GEMINI_API_KEY_V3, version: "v3" },
     ];
 
     const availableKeys = keys.filter((k) => k.key);
