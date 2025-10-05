@@ -247,7 +247,7 @@ export default function GiaDinhPresentation() {
                   })),
                 }}
                 trigger={["hover"]}
-                placement="bottomCenter"
+                placement="bottom"
               >
                 <Button
                   type="text"

@@ -7,7 +7,6 @@ import {
   TeamOutlined,
 } from "@ant-design/icons";
 import {
-  Button,
   Card,
   Col,
   Image,
@@ -17,94 +16,14 @@ import {
   Table,
   Typography,
 } from "antd";
+import { Slide1 } from "../component/slide_1/slide_1";
 
 const { Title, Paragraph, Text } = Typography;
 
 export const SlidesContent = ({ scrollToSection }) => {
   return (
     <>
-      {/* SLIDE 1: TRANG TIÊU ĐỀ */}
-      <section
-        id="slide1"
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          background: "linear-gradient(135deg, #d43731, #b91c1c)",
-          position: "relative",
-          overflow: "hidden",
-          padding: "80px 24px",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage:
-              "url('https://cdn-media.sforum.vn/storage/app/media/anh-vinh-ha-long-28.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            opacity: 0.5,
-            zIndex: 0,
-          }}
-        />
-        <div
-          style={{
-            textAlign: "center",
-            position: "relative",
-            zIndex: 1,
-            maxWidth: 1200,
-            margin: "0 auto",
-          }}
-        >
-          <Title
-            level={1}
-            style={{
-              color: "white",
-              fontSize: "3rem",
-              fontWeight: 700,
-              marginBottom: 16,
-              fontFamily: "var(--font-fraunces)",
-              lineHeight: 1.2,
-            }}
-          >
-            GIA ĐÌNH TRONG THỜI KỲ QUÁ ĐỘ LÊN CHỦ NGHĨA XÃ HỘI
-          </Title>
-          <Title
-            level={2}
-            style={{
-              color: "white",
-              fontSize: "1.5rem",
-              fontWeight: 500,
-              marginBottom: 24,
-              opacity: 0.9,
-            }}
-          >
-            TỪ LÝ LUẬN KINH ĐIỂN MÁC-LÊNIN ĐẾN THỰC TIỄN VIỆT NAM
-          </Title>
-          <Button
-            type="primary"
-            size="large"
-            onClick={() => scrollToSection("slide2")}
-            style={{
-              background: "#f9f350",
-              borderColor: "#f9f350",
-              color: "#171717",
-              fontWeight: 600,
-              padding: "12px 32px",
-              borderRadius: 8,
-              display: "block",
-              margin: "0 auto",
-            }}
-          >
-            Bắt đầu tìm hiểu
-          </Button>
-        </div>
-      </section>
+      <Slide1 scrollToSection={scrollToSection} />
 
       {/* SLIDE 2: MỞ ĐẦU & PHẠM VI NGHIÊN CỨU */}
       <section

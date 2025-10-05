@@ -1,0 +1,64 @@
+/* Slide 1 Styles */
+.slide {
+  min-height: 100vh;
+  padding: 80px 24px;
+}
+
+.hero-bg {
+  background: linear-gradient(135deg, #a84334 0%, #7a3428 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.title-light-cream {
+  color: #f5e6d3 !important;
+}
+
+.decorative-corner {
+  width: 20px;
+  height: 20px;
+  background: #d4af37;
+  border-radius: 50%;
+}
+
+.decorative-corner-br {
+  width: 20px;
+  height: 20px;
+  background: #f5e6d3;
+  border-radius: 50%;
+}
+
+.ornament {
+  font-size: 2rem;
+  color: #d4af37;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  background: #d4af37;
+  color: #0f1f3d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.image-frame {
+  border: 4px solid #d4af37;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.vintage-shadow {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-divider {
+  height: 2px;
+  background: #d4af37;
+  margin: 1rem auto;
+}
