@@ -3,7 +3,7 @@
   min-height: calc(100vh - 56px);
   background: #f5e6d3;
   background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(90deg, #00000008 1px, transparent 1px);
   background-size: 20px 20px;
   font-family: "Fraunces", "Inter", -apple-system, BlinkMacSystemFont,
     sans-serif;
@@ -221,72 +221,76 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  max-width: 1200px; /* Tăng từ 800px lên 1200px */
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem 2rem; /* Giảm padding dọc, tăng padding ngang */
+  padding: 0.5rem 2rem;
   width: 100%;
   background: transparent;
 }
 
-/* Welcome Screen */
+/* Welcome Screen - Tối ưu cho màn hình 16:9 */
 .welcome-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex: 1;
   text-align: center;
-  padding: 1rem 2rem; /* Giảm padding dọc */
+  padding: 1rem 2rem 0.5rem;
   background: transparent;
-  max-height: calc(100vh - 200px); /* Giới hạn chiều cao */
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
 }
 
 .welcome-title {
   font-family: "Fraunces", serif;
-  font-size: clamp(1.8rem, 4vw, 2.8rem); /* Giảm font size */
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 800;
   font-optical-sizing: auto;
   color: var(--vn-red-600);
-  margin-bottom: 0.75rem; /* Giảm margin */
+  margin-bottom: 0.5rem;
   text-align: center;
-  line-height: 1.5; /* Tăng line height để tránh chữ bị cắt */
+  line-height: 1.3;
   letter-spacing: -0.02em;
+  width: 100%;
 }
 
 .welcome-subtitle {
   color: var(--vn-red-700);
-  font-size: clamp(0.95rem, 2.5vw, 1.1rem); /* Giảm kích thước font */
-  margin-bottom: 1.5rem; /* Giảm margin */
-  max-width: 700px; /* Tăng max-width */
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  margin-bottom: 1rem;
+  max-width: 800px;
   text-align: center;
-  line-height: 1.5; /* Giảm line-height */
+  line-height: 1.5;
   font-weight: 500;
+  width: 100%;
 }
 
-/* Suggested Prompts */
+/* Suggested Prompts - Grid 3 cột cho màn hình 16:9 */
 .suggested-prompts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Giảm minmax */
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.875rem;
   width: 100%;
-  max-width: 1000px; /* Tăng max-width */
-  margin-bottom: 1rem; /* Giảm margin */
+  max-width: 1300px;
+  margin-bottom: 0.5rem;
 }
 
 .prompt-card {
   background: var(--vn-red-600);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(168, 67, 52, 0.1);
+  border: 2px solid rgba(212, 175, 55, 0.3);
   border-radius: 10px;
-  padding: 1rem 1.25rem; /* Giảm padding */
+  padding: 0.875rem 1.15rem;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: left;
   position: relative;
   overflow: hidden;
-  height: 140px; /* Đặt chiều cao cố định để các ô bằng nhau */
+  height: 120px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .prompt-card::before {
@@ -296,13 +300,14 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: var(--vn-red-600);
+  background: var(--gold);
   transition: width 0.3s ease;
 }
 
 .prompt-card:hover {
   border-color: var(--gold);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
 }
 
 .prompt-card:hover::before {
@@ -310,31 +315,33 @@
 }
 
 .prompt-card-title {
-  color: var(--cream-100);
+  color: #ffffff;
   font-weight: 700;
-  margin-bottom: 0.5rem; /* Giảm margin */
-  font-size: 1rem; /* Giảm font size */
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
+  line-height: 1.3;
 }
 
 .prompt-card-title::before {
   content: "💡";
-  font-size: 1rem;
+  font-size: 0.95rem;
+  flex-shrink: 0;
 }
 
 .prompt-card-text {
   color: var(--cream-100);
-  font-size: 0.85rem; /* Giảm font size */
-  line-height: 1.1; /* Giảm line height */
+  font-size: 0.8rem;
+  line-height: 1.35;
   font-weight: 400;
-  flex: 1; /* Chiếm không gian còn lại */
-  overflow: hidden; /* Ẩn nội dung tràn */
+  flex: 1;
+  overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Giới hạn số dòng */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  line-clamp: 3; /* Thuộc tính chuẩn */
+  line-clamp: 3;
 }
 
 /* Chat Messages */
@@ -515,43 +522,100 @@
 }
 
 /* Responsive Design */
-/* Large screens (desktop 16:9) */
-@media (min-width: 1440px) {
+/* Large screens (desktop 16:9) - 1920x1080 và tương tự */
+@media (min-width: 1600px) {
   .chat-container {
-    max-width: 1400px; /* Tăng thêm cho màn hình lớn */
-    padding: 1rem 3rem;
+    max-width: 1500px;
+    padding: 0.75rem 3rem;
   }
 
   .suggested-prompts {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns cho màn hình lớn */
-    max-width: 1200px;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1400px;
+    gap: 1rem;
+  }
+
+  .prompt-card {
+    height: 130px;
+    padding: 1rem 1.25rem;
   }
 
   .input-container {
+    max-width: 1300px;
+  }
+}
+
+/* Standard desktop 16:9 - 1366x768, 1440x900, 1600x900 */
+@media (min-width: 1200px) and (max-width: 1599px) {
+  .suggested-prompts {
+    grid-template-columns: repeat(3, 1fr);
     max-width: 1200px;
   }
-}
 
-@media (min-width: 1200px) and (max-width: 1439px) {
-  .suggested-prompts {
-    grid-template-columns: repeat(
-      3,
-      1fr
-    ); /* 3 columns cho màn hình trung bình */
+  .prompt-card {
+    height: 120px;
   }
 }
 
-@media (max-width: 1024px) {
+/* Laptop screens - 1024x768 */
+@media (min-width: 1024px) and (max-width: 1199px) {
   .sidebar {
-    width: 320px;
+    width: 280px;
   }
 
   .suggested-prompts {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
+    max-width: 1000px;
+  }
+
+  .prompt-card {
+    height: 115px;
+    padding: 0.8rem 1rem;
+  }
+
+  .prompt-card-title {
+    font-size: 0.9rem;
+  }
+
+  .prompt-card-text {
+    font-size: 0.75rem;
   }
 
   .chat-container {
+    padding: 0.5rem 1.5rem;
+  }
+
+  .welcome-title {
+    font-size: 2.2rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet landscape - 2 cột */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .sidebar {
+    width: 300px;
+  }
+
+  .suggested-prompts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.875rem;
+    max-width: 800px;
+  }
+
+  .prompt-card {
+    height: 130px;
+  }
+
+  .chat-container {
+    padding: 1rem 1.5rem;
+  }
+
+  .welcome-screen {
     padding: 1.5rem 1rem;
   }
 }
