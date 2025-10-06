@@ -104,8 +104,11 @@ export default function QuizPage() {
           style={{ paddingTop: "56px", minHeight: "calc(100vh - 56px)" }}
         >
           <div className="quiz-container">
-            <div style={{ textAlign: "center", padding: "50px" }}>
-              <Text>Đang tải câu hỏi...</Text>
+            <div className="quiz-loading">
+              <div className="loading-icon">📚</div>
+              <Text style={{ fontSize: "18px", color: "#0f1f3d" }}>
+                Đang tải câu hỏi...
+              </Text>
             </div>
           </div>
         </Content>
@@ -193,29 +196,45 @@ export default function QuizPage() {
         >
           <div className="quiz-container">
             <div className="quiz-completed">
+              <div className="completed-icon">🎉</div>
               <Title
                 level={2}
-                style={{ textAlign: "center", color: "#a84334" }}
+                style={{
+                  textAlign: "center",
+                  color: "#a84334",
+                  marginBottom: "8px",
+                }}
               >
-                Chúc mừng! Bạn đã hoàn thành quiz
+                Chúc mừng!
               </Title>
+              <Text
+                style={{
+                  fontSize: "18px",
+                  color: "#0f1f3d",
+                  textAlign: "center",
+                  display: "block",
+                  marginBottom: "32px",
+                }}
+              >
+                Bạn đã hoàn thành quiz
+              </Text>
               <div className="score-display">
-                <Text style={{ fontSize: "24px", fontWeight: "bold" }}>
-                  Điểm số: {score}/{totalQuestions}
+                <Text className="score-number">
+                  {score}/{totalQuestions}
                 </Text>
-                <Text style={{ fontSize: "18px", marginTop: "10px" }}>
-                  Tỷ lệ đúng: {Math.round((score / totalQuestions) * 100)}%
+                <Text className="score-percentage">
+                  {Math.round((score / totalQuestions) * 100)}%
+                </Text>
+                <Text
+                  style={{ fontSize: "14px", color: "#666", marginTop: "8px" }}
+                >
+                  Tỷ lệ đúng
                 </Text>
               </div>
               <Button
                 type="primary"
-                size="large"
                 onClick={resetQuiz}
-                style={{
-                  background: "#a84334",
-                  borderColor: "#a84334",
-                  marginTop: "20px",
-                }}
+                className="reset-button"
               >
                 Làm lại quiz
               </Button>
@@ -315,9 +334,23 @@ export default function QuizPage() {
       <Content style={{ paddingTop: "56px", minHeight: "calc(100vh - 56px)" }}>
         <div className="quiz-container">
           <div className="quiz-question">
-            <Title level={4} style={{ marginBottom: "20px", color: "#0f1f3d" }}>
-              Câu {currentQuestionIndex + 1}: {currentQuestion?.question}
-            </Title>
+            <div className="question-header">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "16px",
+                }}
+              >
+                <div className="question-number">
+                  {currentQuestionIndex + 1}
+                </div>
+                <Text style={{ fontSize: "14px", color: "#666" }}>
+                  Câu hỏi {currentQuestionIndex + 1} / {totalQuestions}
+                </Text>
+              </div>
+              <div className="question-title">{currentQuestion?.question}</div>
+            </div>
             <div className="quiz-options">
               {currentQuestion?.options.map((option, index) => (
                 <Button
@@ -337,15 +370,15 @@ export default function QuizPage() {
                   disabled={showAnswer}
                   block
                   style={{
-                    marginBottom: "10px",
+                    marginBottom: "12px",
                     height: "auto",
-                    padding: "12px 16px",
+                    padding: "16px 20px",
                     textAlign: "left",
                     whiteSpace: "normal",
                     fontSize: "16px",
                   }}
                 >
-                  <span style={{ fontWeight: "bold", marginRight: "8px" }}>
+                  <span className="option-letter">
                     {String.fromCharCode(65 + index)}.
                   </span>
                   {option}
@@ -353,7 +386,13 @@ export default function QuizPage() {
               ))}
             </div>
             {showAnswer && (
-              <div className="answer-feedback">
+              <div
+                className={`answer-feedback ${
+                  selectedAnswer === currentQuestion.correctAnswer
+                    ? "correct"
+                    : "incorrect"
+                }`}
+              >
                 <Text
                   style={{
                     fontSize: "16px",
@@ -371,14 +410,14 @@ export default function QuizPage() {
                   {String.fromCharCode(65 + currentQuestion.correctAnswer)}.{" "}
                   {currentQuestion.options[currentQuestion.correctAnswer]}
                 </Text>
+              </div>
+            )}
+            {showAnswer && (
+              <div className="quiz-navigation">
                 <Button
                   type="primary"
                   onClick={nextQuestion}
-                  style={{
-                    marginTop: "20px",
-                    background: "#a84334",
-                    borderColor: "#a84334",
-                  }}
+                  className="next-button"
                 >
                   {currentQuestionIndex < totalQuestions - 1
                     ? "Câu tiếp theo"
