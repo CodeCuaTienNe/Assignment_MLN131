@@ -1,0 +1,127 @@
+/* Main App Container - Using Vietnam flag colors */
+.quiz-container {
+  min-height: calc(100vh - 56px);
+  background: #f5e6d3;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, #00000008 1px, transparent 1px);
+  background-size: 20px 20px;
+  font-family: "Fraunces", "Inter", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  position: relative;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* CSS Variables matching main page */
+:root {
+  --vn-red-600: #a84334;
+  --vn-red-700: #8b3a2b;
+  --vn-red-800: #6b2f23;
+  --vn-yellow-400: #f5e6d3;
+  --vn-yellow-500: #f5e6d3;
+  --cream-100: #f5e6d3;
+  --cream-200: #f0ede7;
+  --cream-300: #e8e3dc;
+  --navy: #0f1f3d;
+  --gold: #d4af37;
+}
+
+/* Quiz Question Container */
+.quiz-question {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  width: 100%;
+  border: 2px solid #e8e3dc;
+}
+
+/* Quiz Options */
+.quiz-options {
+  margin-bottom: 20px;
+}
+
+.quiz-option {
+  border: 2px solid #e8e3dc !important;
+  background: white !important;
+  color: #0f1f3d !important;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.quiz-option:hover:not(:disabled) {
+  border-color: #a84334 !important;
+  background: #f9f7f5 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 67, 52, 0.15);
+}
+
+.quiz-option.selected {
+  border-color: #a84334 !important;
+  background: #fef7f5 !important;
+  color: #a84334 !important;
+}
+
+.quiz-option.correct {
+  border-color: #52c41a !important;
+  background: #f6ffed !important;
+  color: #52c41a !important;
+}
+
+.quiz-option.incorrect {
+  border-color: #ff4d4f !important;
+  background: #fff2f0 !important;
+  color: #ff4d4f !important;
+}
+
+.quiz-option:disabled {
+  opacity: 0.6;
+}
+
+/* Answer Feedback */
+.answer-feedback {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f9f7f5;
+  border-radius: 8px;
+  border-left: 4px solid #a84334;
+}
+
+/* Quiz Completed */
+.quiz-completed {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  border: 2px solid #e8e3dc;
+}
+
+.score-display {
+  margin: 30px 0;
+}
+
+.score-display .ant-typography {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quiz-container {
+    padding: 20px 15px;
+  }
+
+  .quiz-question {
+    padding: 20px;
+  }
+
+  .quiz-completed {
+    padding: 30px 20px;
+  }
+}
